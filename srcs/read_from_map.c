@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 12:22:03 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/01 13:15:15 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/01 19:48:59 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static int	map_size(char *map_file)
 
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
+	{
+		ft_putstr_fd("Check if the file exist", 2);
 		exit(1);
+	}
 	line_read = get_next_line(fd);
 	size = 0;
 	while (line_read != NULL)
