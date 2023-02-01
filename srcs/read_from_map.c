@@ -6,18 +6,16 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 12:22:03 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/26 17:49:48 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/01 13:15:15 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "get_next_line.h"
-#include "fcntl.h"
+#include "so_long.h"
 
 static int	map_size(char *map_file)
 {
-	int	size;
-	int	fd;
+	int		size;
+	int		fd;
 	char	*line_read;
 
 	fd = open(map_file, O_RDONLY);
@@ -39,20 +37,20 @@ char	**read_from_map(char *map_file)
 {
 	char	**map;
 	char	*line_read;
-	int	fd;
-	int	row;
+	int		fd;
+	int		row;
 
 	map = malloc((map_size(map_file) + 1) * sizeof(char *));
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
 		exit(1);
-	if (map) {
+	if (map)
+	{
 		row = 0;
 		line_read = get_next_line(fd);
 		while (line_read != NULL)
 		{
 			map[row++] = line_read;
-			map[row - 1][ft_strlen(line_read) - 1] = '\0';
 			line_read = get_next_line(fd);
 		}
 		map[row] = NULL;
@@ -60,4 +58,3 @@ char	**read_from_map(char *map_file)
 	close(fd);
 	return (map);
 }
-

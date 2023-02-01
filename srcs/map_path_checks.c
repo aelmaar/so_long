@@ -6,32 +6,17 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:39:27 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/26 18:13:16 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:57:24 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static void	player_xy_position(char **map, int *player_posy, int *player_posx)
-{
-	while (map[*player_posy] != NULL)
-	{
-		*player_posx = 0;
-		while (map[*player_posy][*player_posx] != '\0')
-		{
-			if (map[*player_posy][*player_posx] == 'P')
-				return ;
-			(*player_posx)++;
-		}
-		(*player_posy)++;
-	}
-}
+#include "so_long.h"
 
 static char	**copy_original_map(char **original_map)
 {
 	char	**map_copy;
-	int	map_len;
-	int	row;
+	int		map_len;
+	int		row;
 
 	map_len = 0;
 	while (original_map[map_len] != NULL)
@@ -52,10 +37,10 @@ static char	**copy_original_map(char **original_map)
 
 static void	check_map_recursively(char **map, int player_posy, int player_posx)
 {
-	if (map[player_posy][player_posx] == '1')
+	if (map[player_posy][player_posx] == '1'
+			|| map[player_posy][player_posx] == 'E')
 		return ;
-	else
-		map[player_posy][player_posx] = '1';
+	map[player_posy][player_posx] = '1';
 	check_map_recursively(map, player_posy, player_posx + 1);
 	check_map_recursively(map, player_posy - 1, player_posx);
 	check_map_recursively(map, player_posy, player_posx - 1);
@@ -73,19 +58,24 @@ static int	is_valid_map_path(char **map)
 		row = 0;
 		while (map[col][row] != '\0')
 		{
-			if (map[col][row] != '1')
+			if (map[col][row] != '1' && map[col][row] != 'E'
+					&& map[col][row] != '0')
+			{
+				free(map);
 				return (0);
+			}
 			row++;
 		}
 		col++;
 	}
+	free(map);
 	return (1);
 }
 
 int	is_valid_path(char **map)
 {
-	int	player_posx;
-	int	player_posy;
+	int		player_posx;
+	int		player_posy;
 	char	**map_copy;
 
 	map_copy = copy_original_map(map);
@@ -93,7 +83,6 @@ int	is_valid_path(char **map)
 	player_posy = 0;
 	if (map_copy)
 	{
-		
 		player_xy_position(map_copy, &player_posy, &player_posx);
 		check_map_recursively(map_copy, player_posy, player_posx);
 		if (is_valid_map_path(map_copy))
@@ -103,4 +92,3 @@ int	is_valid_path(char **map)
 	}
 	return (0);
 }
-

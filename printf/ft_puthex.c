@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 12:50:19 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/31 19:39:46 by ael-maar         ###   ########.fr       */
+/*   Created: 2022/10/25 15:13:30 by ael-maar          #+#    #+#             */
+/*   Updated: 2022/10/26 18:52:04 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+static void	ft_hex(unsigned int n, char *hex, int *count)
 {
-	char	**map;
-
-	if (argc == 2)
+	if (n >= 16)
 	{
-		map = read_from_map(argv[1]);
-		if (map)
-		{
-			check_map(map);
-			play_game(map);
-		}
+		ft_hex(n / 16, hex, count);
 	}
+	ft_putchar(hex[n % 16], count);
+}
+
+void	ft_puthex(unsigned int n, char c, int *count)
+{
+	char	*lower_hex;
+	char	*upper_hex;
+
+	lower_hex = "0123456789abcdef";
+	upper_hex = "0123456789ABCDEF";
+	if (c == 'x')
+		ft_hex(n, lower_hex, count);
+	else
+		ft_hex(n, upper_hex, count);
 }

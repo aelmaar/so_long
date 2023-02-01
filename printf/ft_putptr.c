@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 12:50:19 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/31 19:39:46 by ael-maar         ###   ########.fr       */
+/*   Created: 2022/10/25 16:31:38 by ael-maar          #+#    #+#             */
+/*   Updated: 2022/10/27 11:36:14 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+static void	ft_puthexa_long(unsigned long n, int *count)
 {
-	char	**map;
-
-	if (argc == 2)
+	if (n >= 16)
 	{
-		map = read_from_map(argv[1]);
-		if (map)
-		{
-			check_map(map);
-			play_game(map);
-		}
+		ft_puthexa_long(n / 16, count);
 	}
+	ft_putchar("0123456789abcdef"[n % 16], count);
+}
+
+void	ft_putptr(unsigned long p, int *count)
+{
+	ft_putstr("0x", count);
+	if (p < 16)
+		ft_putchar("0123456789abcdef"[p], count);
+	else
+		ft_puthexa_long(p, count);
 }

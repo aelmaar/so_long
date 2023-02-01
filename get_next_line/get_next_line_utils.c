@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:13:35 by ael-maar          #+#    #+#             */
-/*   Updated: 2022/10/21 17:16:29 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:07:55 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ char	*check_nl_and_alloc_left(char *line)
 				left[j++] = line[i++];
 			left[j] = '\0';
 		}
+		line[i - j - 1] = '\0';
 	}
-	line[i - j] = '\0';
+	else
+		line[i - j] = '\0';
 	return (left);
 }

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 12:50:19 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/31 19:39:46 by ael-maar         ###   ########.fr       */
+/*   Created: 2022/10/25 12:21:04 by ael-maar          #+#    #+#             */
+/*   Updated: 2022/10/26 13:09:53 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+void	ft_putstr(char *s, int *count)
 {
-	char	**map;
-
-	if (argc == 2)
+	if (!s)
 	{
-		map = read_from_map(argv[1]);
-		if (map)
-		{
-			check_map(map);
-			play_game(map);
-		}
+		ft_putstr("(null)", count);
+		return ;
+	}
+	while (*s)
+	{
+		ft_putchar(*s, count);
+		s++;
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:26:12 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/26 17:16:02 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:28:07 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
 int	is_map_not_rectangular(char **map)
 {
@@ -21,7 +21,7 @@ int	is_map_not_rectangular(char **map)
 	min_len = ft_strlen(map[row]);
 	while (map[row] != NULL)
 	{
-		if (min_len < ft_strlen(map[row]))
+		if (min_len != ft_strlen(map[row]))
 			return (0);
 		row++;
 	}
@@ -109,5 +109,3 @@ int	is_map_surrounded_by_walls(char **map)
 	}
 	return (1);
 }
-
-

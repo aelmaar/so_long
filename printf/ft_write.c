@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   ft_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 12:50:19 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/31 19:39:46 by ael-maar         ###   ########.fr       */
+/*   Created: 2022/10/25 12:17:29 by ael-maar          #+#    #+#             */
+/*   Updated: 2022/10/26 12:00:38 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+void	ft_write(char c, int *count)
 {
-	char	**map;
-
-	if (argc == 2)
-	{
-		map = read_from_map(argv[1]);
-		if (map)
-		{
-			check_map(map);
-			play_game(map);
-		}
-	}
+	write(1, &c, 1);
+	*count += 1;
 }
