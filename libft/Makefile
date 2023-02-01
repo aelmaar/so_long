@@ -6,7 +6,7 @@
 #    By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 14:36:01 by ael-maar          #+#    #+#              #
-#    Updated: 2023/01/26 18:25:01 by ael-maar         ###   ########.fr        #
+#    Updated: 2023/02/01 13:09:12 by ael-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ ft_putnbr_fd.o
 BSRCS = ft_lstnew_bonus.o ft_lstadd_front_bonus.o ft_lstsize_bonus.o ft_lstlast_bonus.o ft_lstadd_back_bonus.o ft_lstdelone_bonus.o ft_lstclear_bonus.o \
 ft_lstiter_bonus.o ft_lstmap_bonus.o
 
-C = gcc
+CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -c
 
 AR = ar -rcs
 
@@ -31,21 +31,24 @@ NAME = libft.a
 
 HEADER = libft.h
 
+all: $(NAME)
+
 $(NAME): $(SRCS)
-	$(AR) $@ $?
+	@$(AR) $@ $?
+	
+%.o: %.c
+	@$(CC) $(CFLAGS) $< -o $@
 
 bonus: all tolibft
 
 tolibft: $(BSRCS)
 	$(AR) $(NAME) $?
 
-all: $(NAME)
-
 clean:
-	$(RM) $(SRCS) $(BSRCS)
+	@$(RM) $(SRCS) $(BSRCS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
