@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:39:27 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/01 18:57:24 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/02 10:44:20 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static char	**copy_original_map(char **original_map)
 
 static void	check_map_recursively(char **map, int player_posy, int player_posx)
 {
-	if (map[player_posy][player_posx] == '1'
-			|| map[player_posy][player_posx] == 'E')
+	if (map[player_posy][player_posx] == '1')
 		return ;
 	map[player_posy][player_posx] = '1';
 	check_map_recursively(map, player_posy, player_posx + 1);
@@ -58,8 +57,7 @@ static int	is_valid_map_path(char **map)
 		row = 0;
 		while (map[col][row] != '\0')
 		{
-			if (map[col][row] != '1' && map[col][row] != 'E'
-					&& map[col][row] != '0')
+			if (map[col][row] == 'C' || map[col][row] == 'E')
 			{
 				free(map);
 				return (0);

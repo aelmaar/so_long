@@ -6,7 +6,7 @@
 #    By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 20:20:01 by ael-maar          #+#    #+#              #
-#    Updated: 2023/02/01 18:55:45 by ael-maar         ###   ########.fr        #
+#    Updated: 2023/02/02 10:43:57 by ael-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
 	@echo "Compiling object ==> \c"
 	@echo $@
 	@$(CC) $(HEADER_FILES) -c $< -o $@
-	@sleep 0.300
+	@sleep 0.200
 
 clean:
 	@make clean -C $(LIBFT_PATH)
