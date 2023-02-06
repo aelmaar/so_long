@@ -6,7 +6,7 @@
 #    By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 20:20:01 by ael-maar          #+#    #+#              #
-#    Updated: 2023/02/06 16:35:38 by ael-maar         ###   ########.fr        #
+#    Updated: 2023/02/06 17:22:27 by ael-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,14 +98,14 @@ $(BNAME): $(LIB_LIBFT) $(LIB_PRINTF) $(GNL_OBJS) | $(BOBJS)
 clean:
 	@make clean -C $(LIBFT_PATH)
 	@make clean -C $(PRINTF_PATH)
-	@$(RM) $(GNL_OBJS) $(OBJS) $(OBJS_PATH)
+	@$(RM) $(GNL_OBJS) $(OBJS_PATH)
 	@echo "\n\033[32m <==== CLEANED SUCCESSFULY ====> \033[0m"
 
 fclean:
 	@make fclean -C $(LIBFT_PATH)
 	@make fclean -C $(PRINTF_PATH)
 	@$(RM) $(GNL_OBJS) $(OBJS) $(OBJS_PATH)
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(BNAME)
 	@echo "\n\033[32m <==== FULLY CLEANED SUCCESSFULY ====> \033[0m\n"
 
 re: fclean all

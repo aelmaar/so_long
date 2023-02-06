@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:43:14 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/06 16:29:37 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:18:32 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,25 @@ void	free_map_on_error(char **map, char *message)
 	exit(1);
 }
 
-void	destroy_all(t_info *img, char *message)
+void	destroy_all(t_inf *inf, char *message)
 {
-	if (img->img_ptr != NULL)
-		mlx_destroy_image(img->mlx_ptr, img->img_ptr);
+	if (inf->inf_ptr != NULL)
+		mlx_destroy_image(inf->mlx_ptr, inf->inf_ptr);
 	ft_putstr_fd(message, 1);
-	mlx_destroy_window(img->mlx_ptr, img->win_ptr);
-	free(img->mlx_ptr);
-	free_map(img->map);
+	mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
+	free(inf->mlx_ptr);
+	free_map(inf->map);
 	exit(0);
 }
 
-void	destroy_all_bonus(t_info_b *img, char *message)
+void	destroy_all_bonus(t_inf_b *inf, char *message)
 {
-	if (img->img_ptr != NULL)
-		mlx_destroy_image(img->mlx_ptr, img->img_ptr);
+	if (inf->inf_ptr != NULL)
+		mlx_destroy_image(inf->mlx_ptr, inf->inf_ptr);
 	ft_putstr_fd(message, 1);
-	mlx_destroy_window(img->mlx_ptr, img->win_ptr);
-	free(img->mlx_ptr);
-	free_map(img->map);
-	ft_lstclear(&(img->enemies));
+	mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
+	free(inf->mlx_ptr);
+	free_map(inf->map);
+	ft_lstclear(&(inf->enemies));
 	exit(0);
 }

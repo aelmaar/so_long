@@ -6,100 +6,100 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:27:46 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/06 16:48:55 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:18:32 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	move_right(t_info_b *img)
+static void	move_right(t_inf_b *inf)
 {
-	if (img->map[img->player_posy][img->player_posx + 1] == 'C')
-		img->collectibles--;
-	if (img->map[img->player_posy][img->player_posx + 1] == 'C'\
-	|| img->map[img->player_posy][img->player_posx + 1] == '0')
+	if (inf->map[inf->player_posy][inf->player_posx + 1] == 'C')
+		inf->collectibles--;
+	if (inf->map[inf->player_posy][inf->player_posx + 1] == 'C'\
+	|| inf->map[inf->player_posy][inf->player_posx + 1] == '0')
 	{
-		img->map[img->player_posy][img->player_posx + 1] = 'P';
-		img->map[img->player_posy][img->player_posx] = '0';
-		img->player_posx++;
-		img->count_moves++;
+		inf->map[inf->player_posy][inf->player_posx + 1] = 'P';
+		inf->map[inf->player_posy][inf->player_posx] = '0';
+		inf->player_posx++;
+		inf->count_moves++;
 	}
-	else if (img->map[img->player_posy][img->player_posx + 1] == 'E'
-			&& img->collectibles == 0)
-		img->player_posx++;
-	else if (img->map[img->player_posy][img->player_posx + 1] == 'A')
-		img->player_posx++;
-	img->path_player = "./textures/player_right.xpm";
+	else if (inf->map[inf->player_posy][inf->player_posx + 1] == 'E'
+			&& inf->collectibles == 0)
+		inf->player_posx++;
+	else if (inf->map[inf->player_posy][inf->player_posx + 1] == 'A')
+		inf->player_posx++;
+	inf->path_player = "./textures/player_right.xpm";
 }
 
-static void	move_up(t_info_b *img)
+static void	move_up(t_inf_b *inf)
 {
-	if (img->map[img->player_posy - 1][img->player_posx] == 'C')
-		img->collectibles--;
-	if (img->map[img->player_posy - 1][img->player_posx] == 'C' \
-	|| img->map[img->player_posy - 1][img->player_posx] == '0')
+	if (inf->map[inf->player_posy - 1][inf->player_posx] == 'C')
+		inf->collectibles--;
+	if (inf->map[inf->player_posy - 1][inf->player_posx] == 'C' \
+	|| inf->map[inf->player_posy - 1][inf->player_posx] == '0')
 	{
-		img->map[img->player_posy - 1][img->player_posx] = 'P';
-		img->map[img->player_posy][img->player_posx] = '0';
-		img->player_posy--;
-		img->count_moves++;
+		inf->map[inf->player_posy - 1][inf->player_posx] = 'P';
+		inf->map[inf->player_posy][inf->player_posx] = '0';
+		inf->player_posy--;
+		inf->count_moves++;
 	}
-	else if (img->map[img->player_posy - 1][img->player_posx] == 'E'
-			&& img->collectibles == 0)
-		img->player_posy--;
-	else if (img->map[img->player_posy - 1][img->player_posx] == 'A')
-		img->player_posy--;
+	else if (inf->map[inf->player_posy - 1][inf->player_posx] == 'E'
+			&& inf->collectibles == 0)
+		inf->player_posy--;
+	else if (inf->map[inf->player_posy - 1][inf->player_posx] == 'A')
+		inf->player_posy--;
 }
 
-static void	move_left(t_info_b *img)
+static void	move_left(t_inf_b *inf)
 {
-	if (img->map[img->player_posy][img->player_posx - 1] == 'C')
-		img->collectibles--;
-	if (img->map[img->player_posy][img->player_posx - 1] == 'C' \
-	|| img->map[img->player_posy][img->player_posx - 1] == '0')
+	if (inf->map[inf->player_posy][inf->player_posx - 1] == 'C')
+		inf->collectibles--;
+	if (inf->map[inf->player_posy][inf->player_posx - 1] == 'C' \
+	|| inf->map[inf->player_posy][inf->player_posx - 1] == '0')
 	{
-		img->map[img->player_posy][img->player_posx - 1] = 'P';
-		img->map[img->player_posy][img->player_posx] = '0';
-		img->player_posx--;
-		img->count_moves++;
+		inf->map[inf->player_posy][inf->player_posx - 1] = 'P';
+		inf->map[inf->player_posy][inf->player_posx] = '0';
+		inf->player_posx--;
+		inf->count_moves++;
 	}
-	else if (img->map[img->player_posy][img->player_posx - 1] == 'E'
-			&& img->collectibles == 0)
-		img->player_posx--;
-	else if (img->map[img->player_posy][img->player_posx - 1] == 'A')
-		img->player_posx--;
-	img->path_player = "./textures/player_left.xpm";
+	else if (inf->map[inf->player_posy][inf->player_posx - 1] == 'E'
+			&& inf->collectibles == 0)
+		inf->player_posx--;
+	else if (inf->map[inf->player_posy][inf->player_posx - 1] == 'A')
+		inf->player_posx--;
+	inf->path_player = "./textures/player_left.xpm";
 }
 
-static void	move_down(t_info_b *img)
+static void	move_down(t_inf_b *inf)
 {
-	if (img->map[img->player_posy + 1][img->player_posx] == 'C')
-		img->collectibles--;
-	if (img->map[img->player_posy + 1][img->player_posx] == 'C' \
-	|| img->map[img->player_posy + 1][img->player_posx] == '0')
+	if (inf->map[inf->player_posy + 1][inf->player_posx] == 'C')
+		inf->collectibles--;
+	if (inf->map[inf->player_posy + 1][inf->player_posx] == 'C' \
+	|| inf->map[inf->player_posy + 1][inf->player_posx] == '0')
 	{
-		img->map[img->player_posy + 1][img->player_posx] = 'P';
-		img->map[img->player_posy][img->player_posx] = '0';
-		img->player_posy++;
-		img->count_moves++;
+		inf->map[inf->player_posy + 1][inf->player_posx] = 'P';
+		inf->map[inf->player_posy][inf->player_posx] = '0';
+		inf->player_posy++;
+		inf->count_moves++;
 	}
-	else if ((img->map[img->player_posy + 1][img->player_posx] == 'E' \
-			&& img->collectibles == 0))
-		img->player_posy++;
-	else if (img->map[img->player_posy + 1][img->player_posx] == 'A')
-		img->player_posy++;
+	else if ((inf->map[inf->player_posy + 1][inf->player_posx] == 'E' \
+			&& inf->collectibles == 0))
+		inf->player_posy++;
+	else if (inf->map[inf->player_posy + 1][inf->player_posx] == 'A')
+		inf->player_posy++;
 }
 
-void	move_player_bonus(int keycode, t_info_b *img)
+void	move_player_bonus(int keycode, t_inf_b *inf)
 {
 	if (keycode == 124)
-		move_right(img);
+		move_right(inf);
 	else if (keycode == 126)
-		move_up(img);
+		move_up(inf);
 	else if (keycode == 123)
-		move_left(img);
+		move_left(inf);
 	else if (keycode == 125)
-		move_down(img);
+		move_down(inf);
 	else if (keycode == 53)
-		destroy_all_bonus(img, "You exit the game");
+		destroy_all_bonus(inf, "You exit the game");
 }

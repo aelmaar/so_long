@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:05:53 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/05 20:34:21 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:18:32 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	check_map(char	**map);
 /*                        */
 /**************************/
 
-/* STRUCT OF THAT INCLUDE ALL THE INFORMATIONS ABOUT THE GAME */
+/* STRUCT OF THAT INCLUDE ALL THE infRMATIONS ABOUT THE GAME */
 
-typedef struct s_info
+typedef struct s_inf
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_ptr;
+	void	*inf_ptr;
 	char	**map;
 	char	*path_player;
 	char	*path_exit;
@@ -78,20 +78,20 @@ typedef struct s_info
 	int		count_moves;
 	int		xpm_width;
 	int		xpm_height;
-}	t_info;
+}	t_inf;
 
 /* FUNCTIONS THAT DRAW ON THE WINDOW */
 
-void	draw_map(char **map, t_info *img);
-void	load_xpm_image(char icon, t_info *img, int x, int y);
+void	draw_map(char **map, t_inf *inf);
+void	load_xpm_image(char icon, t_inf *inf, int x, int y);
 
 /* EVENT HANDLING FUNCTIONS */
 
-int		key_press(int keycode, t_info *img);
+int		key_press(int keycode, t_inf *inf);
 
 /* PLAYER MOVE FUNCTION */
 
-void	move_player(int keycode, t_info *img);
+void	move_player(int keycode, t_inf *inf);
 
 /* GAME START FROM HER */
 
@@ -107,8 +107,8 @@ void	component_xy_position(char **map, int *cmp_posy, \
 								int *cmp_posx, int icon);
 void	free_map(char **map);
 void	free_map_on_error(char **map, char *message);
-void	destroy_all(t_info *img, char *message);
-void	calc_width_height(char **map, t_info *img);
-void	count_collectibles(char **map, t_info *img);
+void	destroy_all(t_inf *inf, char *message);
+void	calc_width_height(char **map, t_inf *inf);
+void	count_collectibles(char **map, t_inf *inf);
 
 #endif

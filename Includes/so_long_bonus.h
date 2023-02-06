@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 19:51:22 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/06 16:06:45 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:18:32 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	check_map(char	**map);
 /*                        */
 /**************************/
 
-/* STRUCT OF THAT INCLUDE ALL THE INFORMATIONS ABOUT THE GAME */
+/* STRUCT OF THAT INCLUDE ALL THE infRMATIONS ABOUT THE GAME */
 
-typedef struct s_info_b
+typedef struct s_inf_b
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img_ptr;
+	void	*inf_ptr;
 	char	**map;
 	char	*path_player;
 	char	*path_exit;
@@ -82,26 +82,26 @@ typedef struct s_info_b
 	t_enemy	*enemies;
 	int		enemy_length;
 	t_enemy	*temp;
-}	t_info_b;
+}	t_inf_b;
 
 /* FUNCTIONS THAT DRAW ON THE WINDOW */
 
-void	draw_map_bonus(char **map, t_info_b *img);
-void	load_xpm_image_bonus(char icon, t_info_b *img, int x, int y);
-void	draw_top_window(t_info_b *img);
+void	draw_map_bonus(char **map, t_inf_b *inf);
+void	load_xpm_image_bonus(char icon, t_inf_b *inf, int x, int y);
+void	draw_top_window(t_inf_b *inf);
 
 /* EVENT HANDLING FUNCTIONS */
 
-int		enemy_patrol(t_info_b *img);
-int		key_press_bonus(int keycode, t_info_b *img);
+int		enemy_patrol(t_inf_b *inf);
+int		key_press_bonus(int keycode, t_inf_b *inf);
 
 /* PLAYER MOVE FUNCTION */
 
-void	move_player_bonus(int keycode, t_info_b *img);
+void	move_player_bonus(int keycode, t_inf_b *inf);
 
 /* ENEMY MOVE FUNCTION */
 
-void	move_enemy(t_info_b *img);
+void	move_enemy(t_inf_b *inf);
 
 /* GAME START FROM HER */
 
@@ -117,9 +117,9 @@ void	component_xy_position(char **map, int *cmp_posy, \
 								int *cmp_posx, int icon);
 void	free_map(char **map);
 void	free_map_on_error(char **map, char *message);
-void	destroy_all_bonus(t_info_b *img, char *message);
+void	destroy_all_bonus(t_inf_b *inf, char *message);
 void	enemies_x_y_positions(char **map, t_enemy **enemy);
-void	calc_width_height_bonus(char **map, t_info_b *img);
-void	count_collectibles_bonus(char **map, t_info_b *img);
+void	calc_width_height_bonus(char **map, t_inf_b *inf);
+void	count_collectibles_bonus(char **map, t_inf_b *inf);
 
 #endif
