@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 11:26:12 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/01/30 19:28:07 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/03 18:34:36 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	is_valid_map_components(char **map)
 			if (position == 'E' || position == 'P' || position == 'C')
 				components_count++;
 			if (position != 'E' && position != 'P' && position != 'C' \
-				&& position != '1' && position != '0')
+				&& position != '1' && position != '0' && position != 'A')
 				return (0);
 			row++;
 		}

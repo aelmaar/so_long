@@ -6,13 +6,13 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:59:12 by ael-maar          #+#    #+#             */
-/*   Updated: 2022/10/04 19:07:01 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/03 16:41:02 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_enemy *lst)
 {
 	int	lst_len;
 

@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:39:27 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/02 10:44:20 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/04 20:09:30 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	is_valid_path(char **map)
 	player_posy = 0;
 	if (map_copy)
 	{
-		player_xy_position(map_copy, &player_posy, &player_posx);
+		component_xy_position(map_copy, &player_posy, &player_posx, 'P');
 		check_map_recursively(map_copy, player_posy, player_posx);
 		if (is_valid_map_path(map_copy))
 			return (1);

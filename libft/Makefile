@@ -6,7 +6,7 @@
 #    By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 14:36:01 by ael-maar          #+#    #+#              #
-#    Updated: 2023/02/01 13:09:12 by ael-maar         ###   ########.fr        #
+#    Updated: 2023/02/06 16:52:32 by ael-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_
 ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o \
 ft_putnbr_fd.o
 
-BSRCS = ft_lstnew_bonus.o ft_lstadd_front_bonus.o ft_lstsize_bonus.o ft_lstlast_bonus.o ft_lstadd_back_bonus.o ft_lstdelone_bonus.o ft_lstclear_bonus.o \
-ft_lstiter_bonus.o ft_lstmap_bonus.o
+BSRCS = ft_lstnew_bonus.o ft_lstadd_front_bonus.o ft_lstsize_bonus.o ft_lstlast_bonus.o ft_lstadd_back_bonus.o ft_lstdelone_bonus.o ft_lstclear_bonus.o
 
 CC = cc
 
@@ -42,7 +41,7 @@ $(NAME): $(SRCS)
 bonus: all tolibft
 
 tolibft: $(BSRCS)
-	$(AR) $(NAME) $?
+	@$(AR) $(NAME) $?
 
 clean:
 	@$(RM) $(SRCS) $(BSRCS)

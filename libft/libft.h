@@ -6,7 +6,7 @@
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:52:11 by ael-maar          #+#    #+#             */
-/*   Updated: 2022/10/05 15:12:25 by ael-maar         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:07:32 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,19 @@ void	ft_putnbr_fd(int n, int fd);
 
 // bonus part 
 // struct
-typedef struct s_list
+typedef struct s_enemy
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	int				pos_x;
+	int				pos_y;
+	struct s_enemy	*next;
+}	t_enemy;
 // bonus functions
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_enemy	*ft_lstnew(int pos_x, int pos_y);
+void	ft_lstadd_front(t_enemy **lst, t_enemy *new);
+int		ft_lstsize(t_enemy *lst);
+t_enemy	*ft_lstlast(t_enemy *lst);
+void	ft_lstadd_back(t_enemy **lst, t_enemy *new);
+void	ft_lstdelone(t_enemy *lst);
+void	ft_lstclear(t_enemy **lst);
 
 #endif

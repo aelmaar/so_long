@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 19:05:53 by ael-maar          #+#    #+#             */
-/*   Updated: 2023/02/05 20:34:21 by ael-maar         ###   ########.fr       */
+/*   Created: 2023/02/05 19:51:22 by ael-maar          #+#    #+#             */
+/*   Updated: 2023/02/06 16:06:45 by ael-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 /**************************/
 /*                        */
@@ -57,7 +57,7 @@ void	check_map(char	**map);
 
 /* STRUCT OF THAT INCLUDE ALL THE INFORMATIONS ABOUT THE GAME */
 
-typedef struct s_info
+typedef struct s_info_b
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -68,6 +68,7 @@ typedef struct s_info
 	char	*path_collectible;
 	char	*path_wall;
 	char	*path_bg;
+	char	*path_enemy;
 	int		collectibles;
 	int		width;
 	int		height;
@@ -78,20 +79,29 @@ typedef struct s_info
 	int		count_moves;
 	int		xpm_width;
 	int		xpm_height;
-}	t_info;
+	t_enemy	*enemies;
+	int		enemy_length;
+	t_enemy	*temp;
+}	t_info_b;
 
 /* FUNCTIONS THAT DRAW ON THE WINDOW */
 
-void	draw_map(char **map, t_info *img);
-void	load_xpm_image(char icon, t_info *img, int x, int y);
+void	draw_map_bonus(char **map, t_info_b *img);
+void	load_xpm_image_bonus(char icon, t_info_b *img, int x, int y);
+void	draw_top_window(t_info_b *img);
 
 /* EVENT HANDLING FUNCTIONS */
 
-int		key_press(int keycode, t_info *img);
+int		enemy_patrol(t_info_b *img);
+int		key_press_bonus(int keycode, t_info_b *img);
 
 /* PLAYER MOVE FUNCTION */
 
-void	move_player(int keycode, t_info *img);
+void	move_player_bonus(int keycode, t_info_b *img);
+
+/* ENEMY MOVE FUNCTION */
+
+void	move_enemy(t_info_b *img);
 
 /* GAME START FROM HER */
 
@@ -107,8 +117,9 @@ void	component_xy_position(char **map, int *cmp_posy, \
 								int *cmp_posx, int icon);
 void	free_map(char **map);
 void	free_map_on_error(char **map, char *message);
-void	destroy_all(t_info *img, char *message);
-void	calc_width_height(char **map, t_info *img);
-void	count_collectibles(char **map, t_info *img);
+void	destroy_all_bonus(t_info_b *img, char *message);
+void	enemies_x_y_positions(char **map, t_enemy **enemy);
+void	calc_width_height_bonus(char **map, t_info_b *img);
+void	count_collectibles_bonus(char **map, t_info_b *img);
 
 #endif

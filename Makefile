@@ -6,7 +6,7 @@
 #    By: ael-maar <ael-maar@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 20:20:01 by ael-maar          #+#    #+#              #
-#    Updated: 2023/02/02 10:43:57 by ael-maar         ###   ########.fr        #
+#    Updated: 2023/02/06 16:35:38 by ael-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,19 @@ OBJS_PATH = ./objs
 
 # MANDATORY SOURCE FILES 
 SRCS = $(SRCS_PATH)/run.c $(SRCS_PATH)/read_from_map.c $(SRCS_PATH)/check_map.c $(SRCS_PATH)/map_components_checks.c \
-$(SRCS_PATH)/map_path_checks.c $(SRCS_PATH)/play.c $(SRCS_PATH)/play_utils.c $(SRCS_PATH)/draw.c $(SRCS_PATH)/moves.c \
-$(SRCS_PATH)/so_long_utils.c
+$(SRCS_PATH)/map_path_checks.c $(SRCS_PATH)/play.c $(SRCS_PATH)/play_utils.c $(SRCS_PATH)/draw.c $(SRCS_PATH)/player_moves.c \
+$(SRCS_PATH)/utils.c
+
+# BONUS SOURCE FILES
+BSRCS = $(SRCS_PATH)/run.c $(SRCS_PATH)/read_from_map.c $(SRCS_PATH)/check_map.c $(SRCS_PATH)/map_components_checks.c \
+$(SRCS_PATH)/map_path_checks.c $(SRCS_PATH)/play_bonus.c $(SRCS_PATH)/play_utils_bonus.c $(SRCS_PATH)/draw_bonus.c $(SRCS_PATH)/player_moves_bonus.c \
+$(SRCS_PATH)/enemy_moves.c $(SRCS_PATH)/enemy_utils.c $(SRCS_PATH)/utils.c
 
 # MANDATORY OBJECT FILES
 OBJS = $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
+
+# BONUS OBJECT FILES
+BOBJS = $(BSRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
 
 # GNL FILES
 GNL_PATH = ./get_next_line
@@ -49,6 +57,7 @@ RM = rm -rf
 
 # PROGRAM NAME
 NAME = so_long
+BNAME = so_long_bonus
 
 all: $(NAME)
 
@@ -58,7 +67,7 @@ $(NAME): $(LIB_LIBFT) $(LIB_PRINTF) $(GNL_OBJS)  | $(OBJS)
 
 # COMPILING LIBFT
 $(LIB_LIBFT):
-	@make -C libft
+	@make bonus -C libft
 	@echo "\033[32m <==== COMPILING LIBFT SUCCESSFULY ====> \033[0m"
 
 # COMPILING PRINTF
@@ -78,7 +87,13 @@ $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
 	@echo "Compiling object ==> \c"
 	@echo $@
 	@$(CC) $(HEADER_FILES) -c $< -o $@
-	@sleep 0.200
+	@sleep 0.100
+
+bonus: $(BNAME)
+
+$(BNAME): $(LIB_LIBFT) $(LIB_PRINTF) $(GNL_OBJS) | $(BOBJS)
+	@$(CC) $(MLX_FLAGS) $^ $| -o $@
+	@echo "\n\033[32m <==== COMPILING BONUS SUCCESSFULY ====> \033[0m"
 
 clean:
 	@make clean -C $(LIBFT_PATH)
