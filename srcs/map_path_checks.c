@@ -59,14 +59,14 @@ static int	is_valid_map_path(char **map)
 		{
 			if (map[col][row] == 'C' || map[col][row] == 'E')
 			{
-				free(map);
+				free_map(map);
 				return (0);
 			}
 			row++;
 		}
 		col++;
 	}
-	free(map);
+	free_map(map);
 	return (1);
 }
 
@@ -82,6 +82,7 @@ int	is_valid_path(char **map)
 	if (map_copy)
 	{
 		component_xy_position(map_copy, &player_posy, &player_posx, 'P');
+		
 		check_map_recursively(map_copy, player_posy, player_posx);
 		if (is_valid_map_path(map_copy))
 			return (1);

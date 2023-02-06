@@ -49,8 +49,8 @@ void	free_map_on_error(char **map, char *message)
 
 void	destroy_all(t_inf *inf, char *message)
 {
-	if (inf->inf_ptr != NULL)
-		mlx_destroy_image(inf->mlx_ptr, inf->inf_ptr);
+	if (inf->img_ptr != NULL)
+		mlx_destroy_image(inf->mlx_ptr, inf->img_ptr);
 	ft_putstr_fd(message, 1);
 	mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
 	free(inf->mlx_ptr);
@@ -60,8 +60,8 @@ void	destroy_all(t_inf *inf, char *message)
 
 void	destroy_all_bonus(t_inf_b *inf, char *message)
 {
-	if (inf->inf_ptr != NULL)
-		mlx_destroy_image(inf->mlx_ptr, inf->inf_ptr);
+	if (inf->img_ptr != NULL)
+		mlx_destroy_image(inf->mlx_ptr, inf->img_ptr);
 	ft_putstr_fd(message, 1);
 	mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
 	free(inf->mlx_ptr);

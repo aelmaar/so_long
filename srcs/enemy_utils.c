@@ -69,7 +69,7 @@ int	enemy_patrol(t_inf_b *inf)
 			destroy_all_bonus(inf, "Game over, The enemy touched you");
 		enemy_animation(inf, prev_pos_x, prev_pos_y);
 		inf->temp = inf->temp->next;
-		usleep(5000);
+		usleep(50000);
 		mlx_do_sync(inf->mlx_ptr);
 	}
 	if (inf->temp == NULL)

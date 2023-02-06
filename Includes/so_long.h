@@ -61,7 +61,7 @@ typedef struct s_inf
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*inf_ptr;
+	void	*img_ptr;
 	char	**map;
 	char	*path_player;
 	char	*path_exit;
