@@ -82,7 +82,6 @@ int	is_valid_path(char **map)
 	if (map_copy)
 	{
 		component_xy_position(map_copy, &player_posy, &player_posx, 'P');
-		
 		check_map_recursively(map_copy, player_posy, player_posx);
 		if (is_valid_map_path(map_copy))
 			return (1);

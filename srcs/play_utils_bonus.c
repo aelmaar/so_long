@@ -24,7 +24,8 @@ void	calc_width_height_bonus(char **map, t_inf_b *inf)
 	inf->width = row_len * 60;
 	inf->height = col_len * 60;
 	if (inf->width > 5120 || (inf->height + 60) > 2880)
-		free_map_on_error(map, "The screen resolution is bigger, performance suck");
+		free_map_on_error(map, \
+			"The screen resolution is bigger, performance suck");
 }
 
 void	count_collectibles_bonus(char **map, t_inf_b *inf)
