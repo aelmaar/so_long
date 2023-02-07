@@ -93,5 +93,5 @@ void	move_player(int keycode, t_inf *inf)
 	else if (keycode == 125)
 		move_down(inf);
 	else if (keycode == 53)
-		destroy_all(inf, "You exit the game");
+		destroy_all(inf, "You exit the game", 1);
 }

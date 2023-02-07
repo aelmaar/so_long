@@ -101,5 +101,5 @@ void	move_player_bonus(int keycode, t_inf_b *inf)
 	else if (keycode == 125)
 		move_down(inf);
 	else if (keycode == 53)
-		destroy_all_bonus(inf, "You exit the game");
+		destroy_all_bonus(inf, "You exit the game", 1);
 }
