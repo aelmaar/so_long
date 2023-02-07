@@ -14,8 +14,18 @@
 
 static int	close_window(t_inf_b *inf)
 {
-	destroy_all_bonus(inf, "You destroyed the game");
+	destroy_all_bonus(inf, "You destroyed the game", 1);
 	return (0);
+}
+
+static void	initialize_paths(t_inf_b *inf)
+{
+	inf->path_player = "./textures/player_right.xpm";
+	inf->path_exit = "./textures/closed_door.xpm";
+	inf->path_collectible = "./textures/collectibles.xpm";
+	inf->path_wall = "./textures/wall.xpm";
+	inf->path_bg = "./textures/ground.xpm";
+	inf->path_enemy = "./textures/hydra1.xpm";
 }
 
 static void	initialize(char **map, t_inf_b *inf)
@@ -23,14 +33,15 @@ static void	initialize(char **map, t_inf_b *inf)
 	inf->map = map;
 	calc_width_height_bonus(inf->map, inf);
 	inf->mlx_ptr = mlx_init();
+	inf->img_ptr = NULL;
+	inf->win_ptr = NULL;
+	if (inf->mlx_ptr == NULL)
+		destroy_all_bonus(inf, "Connection failed to X server", 2);
 	inf->win_ptr = mlx_new_window(inf->mlx_ptr, inf->width, \
 			inf->height + 60, "so_long");
-	inf->path_player = "./textures/player_right.xpm";
-	inf->path_exit = "./textures/closed_door.xpm";
-	inf->path_collectible = "./textures/collectibles.xpm";
-	inf->path_wall = "./textures/wall.xpm";
-	inf->path_bg = "./textures/ground.xpm";
-	inf->path_enemy = "./textures/hydra1.xpm";
+	if (inf->win_ptr == NULL)
+		destroy_all_bonus(inf, "Problem initializing the window", 2);
+	initialize_paths(inf);
 	draw_map_bonus(inf->map, inf);
 	component_xy_position(inf->map, &(inf->player_posy), \
 		&(inf->player_posx), 'P');

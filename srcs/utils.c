@@ -42,28 +42,30 @@ void	free_map(char **map)
 
 void	free_map_on_error(char **map, char *message)
 {
-	perror(message);
+	ft_putstr_fd(message, 2);
 	free_map(map);
 	exit(1);
 }
 
-void	destroy_all(t_inf *inf, char *message)
+void	destroy_all(t_inf *inf, char *message, int out)
 {
 	if (inf->img_ptr != NULL)
 		mlx_destroy_image(inf->mlx_ptr, inf->img_ptr);
-	ft_putstr_fd(message, 1);
-	mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
+	ft_putstr_fd(message, out);
+	if (inf->win_ptr != NULL)
+		mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
 	free(inf->mlx_ptr);
 	free_map(inf->map);
 	exit(0);
 }
 
-void	destroy_all_bonus(t_inf_b *inf, char *message)
+void	destroy_all_bonus(t_inf_b *inf, char *message, int out)
 {
 	if (inf->img_ptr != NULL)
 		mlx_destroy_image(inf->mlx_ptr, inf->img_ptr);
-	ft_putstr_fd(message, 1);
-	mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
+	ft_putstr_fd(message, out);
+	if (inf->win_ptr != NULL)
+		mlx_destroy_window(inf->mlx_ptr, inf->win_ptr);
 	free(inf->mlx_ptr);
 	free_map(inf->map);
 	ft_lstclear(&(inf->enemies));

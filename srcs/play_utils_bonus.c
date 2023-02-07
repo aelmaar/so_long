@@ -71,10 +71,10 @@ int	key_press_bonus(int keycode, t_inf_b *inf)
 	if (inf->collectibles == 0)
 		inf->path_exit = "./textures/open_door.xpm";
 	if (inf->map[inf->player_posy][inf->player_posx] == 'A')
-		destroy_all_bonus(inf, "Game Over, You touched the enemy");
+		destroy_all_bonus(inf, "Game Over, You touched the enemy", 1);
 	if (inf->collectibles == 0 \
 		&& inf->map[inf->player_posy][inf->player_posx] == 'E')
-		destroy_all_bonus(inf, "\t\t\t\t\tYOU WIN !!\t\t\t\t\t");
+		destroy_all_bonus(inf, "\t\t\t\t\tYOU WIN !!\t\t\t\t\t", 1);
 	load_xpm_image_bonus(inf->map[inf->door_posy][inf->door_posx], \
 			inf, inf->door_posx * 60, inf->door_posy * 60 + 60);
 	load_xpm_image_bonus(inf->map[prev_pos_y][prev_pos_x], \

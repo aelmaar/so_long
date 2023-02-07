@@ -14,8 +14,17 @@
 
 static int	close_window(t_inf *inf)
 {
-	destroy_all(inf, "You destroyed the game");
+	destroy_all(inf, "You destroyed the game", 1);
 	return (0);
+}
+
+static void	initialize_paths(t_inf *inf)
+{
+	inf->path_player = "./textures/player_right.xpm";
+	inf->path_exit = "./textures/closed_door.xpm";
+	inf->path_collectible = "./textures/collectibles.xpm";
+	inf->path_wall = "./textures/wall.xpm";
+	inf->path_bg = "./textures/ground.xpm";
 }
 
 static void	initialize(char **map, t_inf *inf)
@@ -23,13 +32,15 @@ static void	initialize(char **map, t_inf *inf)
 	inf->map = map;
 	calc_width_height(inf->map, inf);
 	inf->mlx_ptr = mlx_init();
+	inf->img_ptr = NULL;
+	inf->win_ptr = NULL;
+	if (inf->mlx_ptr == NULL)
+		destroy_all(inf, "Connection failed to X server", 2);
 	inf->win_ptr = mlx_new_window(inf->mlx_ptr, inf->width, \
 			inf->height, "so_long");
-	inf->path_player = "./textures/player_right.xpm";
-	inf->path_exit = "./textures/closed_door.xpm";
-	inf->path_collectible = "./textures/collectibles.xpm";
-	inf->path_wall = "./textures/wall.xpm";
-	inf->path_bg = "./textures/ground.xpm";
+	if (inf->win_ptr == NULL)
+		destroy_all(inf, "Problem initializing the window", 2);
+	initialize_paths(inf);
 	draw_map(inf->map, inf);
 	component_xy_position(inf->map, &(inf->player_posy), \
 			&(inf->player_posx), 'P');

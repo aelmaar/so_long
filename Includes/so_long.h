@@ -107,7 +107,7 @@ void	component_xy_position(char **map, int *cmp_posy, \
 								int *cmp_posx, int icon);
 void	free_map(char **map);
 void	free_map_on_error(char **map, char *message);
-void	destroy_all(t_inf *inf, char *message);
+void	destroy_all(t_inf *inf, char *message, int out);
 void	calc_width_height(char **map, t_inf *inf);
 void	count_collectibles(char **map, t_inf *inf);
 

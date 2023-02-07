@@ -117,7 +117,7 @@ void	component_xy_position(char **map, int *cmp_posy, \
 								int *cmp_posx, int icon);
 void	free_map(char **map);
 void	free_map_on_error(char **map, char *message);
-void	destroy_all_bonus(t_inf_b *inf, char *message);
+void	destroy_all_bonus(t_inf_b *inf, char *message, int out);
 void	enemies_x_y_positions(char **map, t_enemy **enemy);
 void	calc_width_height_bonus(char **map, t_inf_b *inf);
 void	count_collectibles_bonus(char **map, t_inf_b *inf);

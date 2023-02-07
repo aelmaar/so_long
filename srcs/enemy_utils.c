@@ -66,7 +66,7 @@ int	enemy_patrol(t_inf_b *inf)
 		prev_pos_y = inf->temp->pos_y;
 		move_enemy(inf);
 		if (inf->map[inf->temp->pos_y][inf->temp->pos_x] == 'P')
-			destroy_all_bonus(inf, "Game over, The enemy touched you");
+			destroy_all_bonus(inf, "Game over, The enemy touched you", 1);
 		enemy_animation(inf, prev_pos_x, prev_pos_y);
 		inf->temp = inf->temp->next;
 		usleep(50000);

@@ -24,7 +24,8 @@ void	calc_width_height(char **map, t_inf *inf)
 	inf->width = row_len * 60;
 	inf->height = col_len * 60;
 	if (inf->width > 5120 || inf->height > 2880)
-		free_map_on_error(map, "The screen resolution is bigger, performance suck");
+		free_map_on_error(map, \
+			"The screen resolution is bigger, performance suck");
 }
 
 void	count_collectibles(char **map, t_inf *inf)
@@ -59,7 +60,7 @@ int	key_press(int keycode, t_inf *inf)
 		inf->path_exit = "./textures/open_door.xpm";
 	if (inf->collectibles == 0 \
 		&& inf->map[inf->player_posy][inf->player_posx] == 'E')
-		destroy_all(inf, "\t\t\t\t\tYOU WIN !!\t\t\t\t\t");
+		destroy_all(inf, "\t\t\t\t\tYOU WIN !!\t\t\t\t\t", 1);
 	load_xpm_image(inf->map[inf->door_posy][inf->door_posx], \
 			inf, inf->door_posx * 60, inf->door_posy * 60);
 	load_xpm_image(inf->map[prev_pos_y][prev_pos_x], \

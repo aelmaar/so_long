@@ -14,12 +14,12 @@
 
 static void	put_image_to_window(t_inf_b *inf, int x, int y)
 {
-	mlx_put_image_to_window(inf->mlx_ptr, inf->win_ptr, inf->img_ptr, x, y);
 	if (inf->img_ptr == NULL)
-		destroy_all_bonus(inf, "Check the path if its correct");
+		destroy_all_bonus(inf, "Check the path if its correct", 2);
 	else if (inf->xpm_width != 60 || inf->xpm_height != 60)
 		destroy_all_bonus(inf, \
-			"the xpm file not respecting the right dimensions");
+			"the xpm file not respecting the right dimensions", 2);
+	mlx_put_image_to_window(inf->mlx_ptr, inf->win_ptr, inf->img_ptr, x, y);
 	mlx_destroy_image(inf->mlx_ptr, inf->img_ptr);
 	inf->img_ptr = NULL;
 }
